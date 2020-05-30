@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>page</title>
+<script type="text/javascript">
+function fun()
+{
+var userv=document.getElementById("user").value;
+var pwdv=document.getElementById("pwd").value;
+var emailv=document.getElementById("email").value;
+var phv=document.getElementById("ph").value;
+var userreg=new RegExp("[a-zA-Z]*$");
+var emailreg=new RegExp("^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z])+\.)+([a-zA-Z]{2,4})+$");
+var phreg=new RegExp("^[0-9]{10}$");
+var ruser=userreg.exec(userv);
+var remail=emailreg.exec(emailv);
+var rph=phreg.exec(phv);
+if(ruser && remail && rph && (pwdv.length>6))
+{
+alert("All values are valid");
+return true;
+}
+else
+{
+if(!(ruser && userv.length>6))
+{
+alert("username invalid");
+document.getElementById("user").focus();
+}
+if(!remail)
+{
+alert("email id inavlid");
+document.getElementById("email").focus();
+}
+if(!rph)
+{
+alert("phone number inavlid");l
+document.getElementById("ph").focus();
+}
+if(pwdv.length<6)
+{
+alert("password is invalid");
+document.getElementById("pwd").focus();
+}
+return false;
+}
+}
+</script>
+<style>
+pre{font-family:serif,'Times New Roman';}
+</style>
+</head>
+<body>
+<center>
+<h3>Registration</h3>
+<form action=" " method="get" onsubmit="return fun();">
+<pre><strong>
+<table>
+<tr>
+<td>Name:</td>
+<td><input type="text" id="user" size="10"><br>
+</td>
+</tr>
+<tr>
+<td>Password:</td>
+<td><input type="password" id="pwd" size="10"><br>
+</td>
+</tr>
+<tr>
+<td>E-mail Id:</td>
+<td><input type="text" id="email" size="10"><br>
+</td>
+</tr>
+<tr>
+<td>Phone num:</td>
+<td><input type="text" id ="ph" size="10"><br>
+</td>
+</tr>
+<tr>
+<td><input type="submit" value="register"/></td>
+<td><input type="reset" value="reset"/></td>
+</tr>
+</table>
+</strong></pre>
+</form>
+</body>
+</html>
